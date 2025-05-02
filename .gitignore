@@ -1,4 +1,5 @@
 [Bb]uild/
 [Tt]est[Rr]esults.xml
+*.scratch.*
 *.config.*.json
 *.csv
