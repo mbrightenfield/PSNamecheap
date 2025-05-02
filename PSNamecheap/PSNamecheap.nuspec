@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>PSNamecheap</id>
+    <version>0.0.1</version>
+    <authors>Mark Brightenfield</authors>
+    <description>Namecheap API Powershell Module.</description>
+    <copyright>(c) Mark Brightenfield.</copyright>
+  </metadata>
+</package>
