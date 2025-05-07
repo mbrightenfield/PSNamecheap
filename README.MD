@@ -27,7 +27,7 @@ The default config file is stored at `$PSScriptRoot\PSNamecheap.config.${env:Com
 `api.config.load` is called when the PSNamecheap module is loaded to import the config settings and will throw a warning if there is no default config file found. You will need to call `api.config.build` the first time you load the module to generate a new config file and enter your API credentials.
 
 Example Config
-```
+```json
 {
   "ApiUrl": "https://api.sandbox.namecheap.com/xml.response",
   "Global": {
@@ -45,7 +45,7 @@ Example Config
 Under the hood `api.request` makes requests to the API via `Invoke-RestMethod` which takes the Namecheap XML response and converts it to a `[PSCustomObject]` for easy traversal.  `api.request` then traverses the response and returns the `$response.ApiResponse.CommandResponse` portion of the response so you can get to the meat and potatos of the actual response.
 
 Example api.request
-```
+```powershell
 $request = api.request @{
     Command = "namecheap.domains.getList"
     ListType = "ALL"
@@ -57,7 +57,7 @@ $request.DomainGetListResult.Domain | Format-Table -AutoSize
 ```
 
 Result
-```
+```powershell
 ID      Name        User    Created    Expires    IsExpired IsLocked AutoRenew WhoisGuard IsPremium
 --      ----        ----    -------    -------    --------- -------- --------- ---------- ---------
 1020463 example.com example 04/22/2025 04/22/2027 false     false    true      ENABLED    false
@@ -71,18 +71,18 @@ The rest of the functions in this module are wrapper functions that use `api.req
 All wrapper functions attempt to dig into the response object and return the first child of the `CommandResponse` which is typically named `<Command>Result`.  For example: `domains.getInfo` returns the response's `DomainGetInfoResult`
 
 Example domains.getInfo
-```
+```powershell
 domains.getInfo "example.com" | Format-Table
 ```
 
 Result
-```
+```powershell
 Status ID      DomainName  OwnerName IsOwner IsPremium DomainDetails LockDetails Whoisguard PremiumDnsSubscription
 ------ --      ----------  --------- ------- --------- ------------- ----------- ---------- ----------------------
 Ok     1234567 example.com example   true    false     DomainDetails             Whoisguard PremiumDnsSubscription
 ```
 Example domains.getList
-```
+```powershell
 $request = domains.getList
 $request.DomainGetListResult.Domain | Format-Table -AutoSize
 ```
