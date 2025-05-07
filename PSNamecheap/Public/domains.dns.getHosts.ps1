@@ -12,9 +12,6 @@ Should not be used if specifying SLD and TLD parameters explicitly.
 .EXAMPLE
 domains.dns.getHosts "example.com"
 
-.EXAMPLE
-domains.dns.getHosts -SLD "example" -TLD "com"
-
 .LINK
 https://www.namecheap.com/support/api/methods/domains-dns/get-hosts/
 #>

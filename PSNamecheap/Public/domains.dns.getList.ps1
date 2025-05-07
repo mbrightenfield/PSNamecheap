@@ -15,9 +15,6 @@ domains.dns.getList "example.com"
 .EXAMPLE
 domains.dns.getList -DomainName "example.com"
 
-.EXAMPLE
-domains.dns.getList -SLD "example" -TLD "com"
-
 .NOTES
 Can be called by using the DomainName parameter only or the SLD and TLD parameters together.  However, since multiple parameters across
 parameter sets cannot share the same position, you can only omit the parameter name when calling the function with the DomainName parameter set.
